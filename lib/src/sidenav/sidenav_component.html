@@ -1,0 +1,21 @@
+<ul id="slide-out" class="sidenav">
+    <li><a href="#!">Angular hakernoon</a></li>
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Subheader</a></li>
+    <li class="no-padding">
+        <ul class="collapsible collapsible-accordion">
+            <li>
+                <a class="collapsible-header">Outstanding<i class="material-icons">bookmark</i></a>
+                <div class="collapsible-body" *ngIf="(blogService.posts | async)  != null">
+                    <ul>
+                        <li *ngFor="let post of (blogService.posts | async)?.values ">
+                            <a (click)="getPost(post)" class="waves-effect" href="#!">{{post.title}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ul>

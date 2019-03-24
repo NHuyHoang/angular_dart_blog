@@ -1,0 +1,27 @@
+<!-- <div class="card-panel z-depth-1">
+    <h6 style="font-family:Lora; font-size: 8;font-style: italic" class="black-text">
+        {{comment?.user?.first_name}} {{comment?.user?.last_name}}
+    </h6>
+    <p class="grey-text" style="font-size: 10">{{comment?.date_add | date:'dd/MM HH:MM'}}</p>
+    <p>
+        {{comment.message}}
+    </p>
+</div> -->
+
+<div class="comment" style="margin-top:30px">
+    <a class="avatar">
+        <img src="https://immedilet-invest.com/wp-content/uploads/2016/01/user-placeholder.jpg">
+    </a>
+    <div class="content">
+        <a class="author"> {{comment?.user?.first_name}} {{comment?.user?.last_name}}</a>
+        <div class="metadata">
+            <span class="date">{{comment?.date_add | date:'dd/MM HH:MM'}}</span>
+        </div>
+        <div class="text">
+            {{comment.message}}
+        </div>
+        <div class="actions">
+            <a class="reply">Reply</a>
+        </div>
+    </div>
+</div>

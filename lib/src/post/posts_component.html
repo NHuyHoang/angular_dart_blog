@@ -1,0 +1,44 @@
+<div *ngIf="post != null" class="card-panel">
+    <h6 style="font-family:Lora; font-size: 8;font-style: italic" class="grey-text">
+        {{author?.first_name ?? 'anonymous'}} {{author?.last_name}}
+    </h6>
+    <p> {{author?.email}}</p>
+    <h4 style="font-family:Lora; font-weight: bold">{{post.title}}</h4>
+    <p>{{post.body}}</p>
+</div>
+<div>
+    <div class="row" style="display:flex; flex-direction:row; align-items:center;">
+        <div class="input-field col s10">
+            <input #message placeholder="Your thought" type="text" class="validate">
+        </div>
+        <div class="col s2">
+            <div [ngSwitch]="sendingComment">
+                <div *ngSwitchWhen="true" class="preloader-wrapper small active">
+                    <div class="spinner-layer spinner-green-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <a *ngSwitchWhen="false" (click)="setComment(message.value)"
+                    class="waves-effect waves-light btn-flat teal-text btn-large"><i
+                        class="material-icons left">send</i>Send</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div *ngIf="loadingComments == false" class="ui comments">
+    <app-comment *ngFor="let comment of (commentBloc?.comments | async); trackBy: trackByFn" [comment]="comment"></app-comment>
+</div>
+<div *ngIf="loadingComments == true">
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+</div>
